@@ -1,8 +1,9 @@
 #tests/test_analyzer_api_slow.py
 
 from grades.analyzer import analyze_student_grades
-import time
+import time, pytest
 
+@pytest.mark.slow
 def test_analyze_student_grades():
     """Test analyzing student grades (requires live API)."""
     student_id = 1
@@ -12,7 +13,7 @@ def test_analyze_student_grades():
         "pass":[60, 80, 90],
         "fail":[40, 20]
     }
-    
+
     assert result["pass"] == [60, 80, 90]
     assert result["fail"] == [40, 20]
 
